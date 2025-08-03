@@ -1,67 +1,92 @@
-# ALX Project 0x05 – Global State with Context API
+# ALX Project 0x06 – Global State with Redux Toolkit 🚀
 
-> A continuation of `alx-project-0x04`, this project implements **React Context API** to manage a global counter state shared across multiple components such as `Header` and `CounterApp`.
+> Building on `alx-project-0x05`, this project introduces **Redux Toolkit** for global state management across unrelated components like `Header` and `CounterApp`. It demonstrates how to create a central store and synchronize UI state between routes using `useSelector` and `useDispatch`.
 
 ---
 
 ## 📌 Objective
 
-Enable shared state (a counter) between unrelated components using `useContext` instead of prop drilling.
+Use Redux (via Redux Toolkit) to share state between isolated components such as:
 
-### Example Behavior
-
-- Clicking the counter button in `/counter-app` updates the count.
-- The updated count is also reflected live in the `Header` component.
+- `/counter-app` → interactive counter
+- `Header` → displays live count even when not on `/counter-app`
 
 ---
 
-## 🧠 What We Used
+## 🔧 Technologies Used
 
-- ✅ React `useContext` + `useState`
-- ✅ TypeScript support
-- ✅ Project routing via Next.js (or React Router if you're using CRA)
-- ✅ File-based Context API structure for easy scalability
+- **React** (Next.js 15)
+- **Redux Toolkit** + **React Redux**
+- **TypeScript**
+- **Tailwind CSS** for UI
+- **Turbopack** for build performance
 
 ---
 
 ## 🗂️ Project Structure
 
-alx-project-0x05/
-├── context/
-│ └── CountContext.tsx # Context API logic
+alx-project-0x06/
+├── context/ (from previous project, optional if replaced by Redux)
+├── store/
+│ └── store.ts # Redux store configuration
 ├── components/
-│ ├── Header.tsx # Consumes the counter context
-│ └── CounterApp.tsx # Updates the counter
+│ ├── layouts/
+│ │ └── Header.tsx # Displays current count from Redux state
+│ └── common/
+│ └── Button.tsx # Reusable button component
 ├── pages/
 │ ├── index.tsx
-│ └── counter-app.tsx # Routed CounterApp component
-├── ...
+│ └── counter-app.tsx # Counter logic using Redux
+└── ...
 
 
 ---
 
-## 🔧 Setup Instructions
+## ⚙️ Setup Instructions
 
-1. **Clone the repository**
+1. **Duplicate the previous project**
 
-```bash
-git clone https://github.com/Joshuakibwage/alx-project-0x05.git
-cd alx-project-0x05
+```zsh
+cp -r alx-project-0x05 alx-project-0x06
+cd alx-project-0x06
 
-    Install dependencies
+    Install Redux packages
 
-npm install
-# or
-yarn
+npm install redux react-redux @reduxjs/toolkit
+npm install --save-dev @types/react-redux
 
-    Run the development server
+    Run the dev server
 
 npm run dev
 # or
 yarn dev
 
-    Visit:
+---
 
-        / – Homepage with Header
+#✅ What You Learn
+Concept	Benefit
+useSelector	Read values from the global state
+useDispatch	Trigger actions to update state
+Redux Toolkit slice	Define reducers + actions in one file
+Provider pattern	Makes global state available to the entire app
+Tailwind integration	Build elegant UIs quickly
+🧪 Bonus Ideas
 
-        /counter-app – Counter with interactive updates
+    Add a Reset button to set count to 0.
+
+    Persist the counter using localStorage.
+
+    Add dark mode toggle with Redux state.
+
+👨‍💻 Author
+
+Joshua Kibwage – @joshua-kibwage
+Part of the ALX ProDev Frontend Engineering Program
+🏁 License
+
+This project is for educational use under the ALX SE curriculum.
+
+
+---
+
+Happy coding, Joshua!
